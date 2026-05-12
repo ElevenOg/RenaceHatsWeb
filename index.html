@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Renace Hats</title>
+  <link rel="icon" href="/Images/Favicon/favicon.png" type="image/png">
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+
+  <!-- HEADER INDEPENDIENTE -->
+<header class="site-header" id="siteHeader">
+    <nav class="site-navbar">
+
+        <!-- Botón menú -->
+        <button class="site-menu-toggle" id="menuToggle">☰</button>
+
+        <!-- Logo centrado -->
+        <div class="site-logo">
+            <a href="/index.html">
+                <img src="/Images/Logos/LogoRenaceHats.avif" alt="Sombreros Logo" draggable="false">
+            </a>
+        </div>
+
+        <!-- Espaciador -->
+        <div class="site-spacer"></div>
+
+    </nav>
+</header>
+
+<!-- OVERLAY GENERAL (SIEMPRE DESPUÉS DEL HEADER) -->
+<div class="overlay" id="overlay"></div>
+
+<!-- MENÚ PRINCIPAL -->
+<aside class="side-menu" id="sideMenu">
+    <button class="close-menu" id="closeMainMenu">✕</button>
+    <h3 class="menu-title">MENU</h3>
+
+    <ul class="side-menu-links">
+        <li><a href="/index.html">Inicio</a></li>
+        <li class="divider"></li>
+
+        <li>
+            <button class="submenu-btn" id="openCatalogo">
+                Catálogo <span class="arrow">❯</span>
+            </button>
+        </li>
+        <li class="divider"></li>
+
+        <li><a href="/Pages/Nosotros/Nosotros.html">Nosotros</a></li>
+        <li class="divider"></li>
+
+        <li><a href="/Pages/Contacto/Contacto.html">Contacto</a></li>
+    </ul>
+</aside>
+
+<!-- SUBMENÚ CATALOGO -->
+<aside class="side-menu side-menu-secondary" id="catalogoMenu">
+    <button class="close-menu" id="closeCatalogo">✕</button>
+    <h3 class="menu-title">CATÁLOGO</h3>
+
+    <ul class="side-menu-links">
+
+  <li>
+    <a href="/Pages/Catalogo/sombreros.html" class="submenu-btn">
+      Sombreros <span class="arrow">❯</span>
+    </a>
+  </li>
+
+  <li class="divider"></li>
+
+  <li>
+    <a href="/Pages/Catalogo/ponchos.html" class="submenu-btn">
+      Ponchos <span class="arrow">❯</span>
+    </a>
+  </li>
+
+  <li class="divider"></li>
+
+  <li>
+    <a href="/Pages/Catalogo/correas.html" class="submenu-btn">
+      Correas <span class="arrow">❯</span>
+    </a>
+  </li>
+
+</ul>
+</aside>
+
+  <!-- Slider -->
+  <section class="slider">
+    <div class="slides">
+      <div class="slide active">
+        <img src="/Images/Carrusel/carrusel01.avif" alt="Carrusel01">
+      </div>
+      <div class="slide">
+        <img src="/Images/Carrusel/carrusel01_.avif" alt="Carrusel02">
+      </div>
+    </div>
+
+    <!-- Indicadores -->
+    <div class="indicators">
+      <span class="dot active"></span>
+      <span class="dot"></span>
+    </div>
+  </section>
+
+  <!-- Presentación -->
+<section class="about-intro section">
+  <div class="container reveal">
+    <h2 class="title">RENACE LA ESENCIA DEL BUEN SOMBRERO</h2>
+    <p class="subtitle">
+      RENACE HATS surge con la fuerza de un nuevo comienzo, pero con la experiencia y dedicación de quienes aman este ARTE.
+    </p>
+
+    <!-- Contenedor centrado -->
+    <div class="btn-container">
+      <a href="/Pages/Nosotros/nosotros.html" class="btn btn-outline">¿QUIERES SABER MÁS DE NOSOTROS?</a>
+    </div>
+  </div>
+</section>
+
+  <!-- Destacados -->
+  <section id="destacados" class="about-intro section">
+    <div class="container reveal">
+      <h2 class="title">LOS MEJORES ESTILOS</h2>
+      <p class="subtitle">
+        Una selección especial de sombreros destacados que representan lo mejor de nuestra colección.
+      </p>
+
+      <div class="grid">
+        <!-- Tarjeta 1 -->
+        <div class="card reveal">
+          <a href="/Pages/Producto/producto.html?id=sombrero-trevisonegro" class="card-link">
+          <div class="thumb">
+            <img src="/Images/Productos/Sombreros/som01.avif" alt="Sombrero">
+          </div>
+          <div class="body">
+            <h3 class="name">Gamuza Treviso Negro</h3>
+            <p class="price">$180.000</p>
+          </div>
+          </a>
+        </div>
+
+        <!-- Tarjeta 2 -->
+        <div class="card reveal">
+          <a href="/Pages/Producto/producto.html?id=sombrero-suavebrisa-rosado" class="card-link">
+          <div class="thumb">
+            <img src="/Images/Productos/Sombreros/som06.avif" alt="Sombrero">
+          </div>
+          <div class="body">
+            <h3 class="name">Suave Brisa Rosado</h3>
+            <p class="price">$180.000</p>
+      </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- Sección destacada -->
+  <section class="highlight-section">
+    <div class="highlight-card">
+      <!-- Carrusel -->
+      <div class="highlight-carousel">
+        <div class="carousel-slides">
+          <img src="/Images/Carrusel/carrusel02.avif" alt="Img01">
+          <img src="/Images/Carrusel/carrusel02_.avif" alt="Img02">
+          <img src="/Images/Carrusel/carrusel02__.avif" alt="Img03">
+          <img src="/Images/Carrusel/carrusel02___.avif" alt="Img04">
+        </div>
+      </div>
+
+      <!-- Texto -->
+      <div class="highlight-text">
+        <h2 class="title">EL ARTE DE LOS SOMBREROS</h2>
+        <p class="subtitle">
+          Cada sombrero es tejido con dedicación y pasión, combinando tradición y modernidad para un estilo único.
+        </p>
+        <p class="subtitle">La Mejor Calidad Para Ti !</p>
+        <a href="/Pages/Catalogo/sombreros.html" class="btn btn-outline">CATALOGO DE SOMBREROS</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Video -->
+  <section class="hero-video">
+    <video autoplay muted loop playsinline class="hero-video__media">
+      <source src="/Images/VideoSombrero/VideoSombrero.mp4" type="video/mp4">
+      Tu navegador no soporta HTML5 video.
+    </video>
+  </section>
+
+  <!-- Beneficios -->
+  <section class="benefits2-section">
+    <div class="benefits2-container">
+
+      <!-- Carrusel -->
+      <div class="benefits2-slider">
+        <div class="benefit2 active">
+          <div class="benefit2-logo">🎨</div>
+          <h3 class="title">Calidad artesanal</h3>
+          <p class="subtitle">Hechos a mano con precisión y cuidado.</p>
+        </div>
+        <div class="benefit2">
+          <div class="benefit2-logo">💳</div>
+          <h3 class="title">Pago seguro</h3>
+          <p class="subtitle">Compra con total confianza.</p>
+        </div>
+        <div class="benefit2">
+          <div class="benefit2-logo">📞</div>
+          <h3 class="title">Atención personalizada</h3>
+          <p class="subtitle">Contáctanos por WhatsApp y te atenderemos.</p>
+        </div>
+        <div class="benefit2">
+          <div class="benefit2-logo">🚚</div>
+          <h3 class="title">Envío gratis</h3>
+          <p class="subtitle">Sin costos de envío para Colombia.</p>
+        </div>
+        <div class="benefit2">
+          <div class="benefit2-logo">👒</div>
+          <h3 class="title">Comodidad y estilo único</h3>
+          <p class="subtitle">Diseños elegantes que se sienten tan bien como lucen.</p>
+        </div>
+      </div>
+
+      <!-- Controles -->
+      <div class="benefits2-controls">
+        <button class="benefits2-arrow prev2">&#10094;</button>
+        <div class="benefits2-dots">
+          <span class="dot2 active"></span>
+          <span class="dot2"></span>
+          <span class="dot2"></span>
+          <span class="dot2"></span>
+          <span class="dot2"></span>
+        </div>
+        <button class="benefits2-arrow next2">&#10095;</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <!-- Columna izquierda -->
+      <div class="footer-col footer-logo">
+        <img src="/Images/Logos/LogoRenaceHats.avif" alt="Renace Hats Logo">
+      </div>
+
+      <!-- Columna centro -->
+      <div class="footer-col footer-info">
+        <h3>Información</h3>
+        <div class="footer-links">
+          <a href="/Pages/Nosotros/nosotros.html">Nosotros</a>
+          <a href="/Pages/Contacto/contacto.html">Contacto</a>
+          <a href="/Pages/Politicas/politicas.html">Nuestras Políticas</a>
+        </div>
+      </div>
+
+      <!-- Columna derecha -->
+      <div class="footer-col footer-social">
+        <h3>Síguenos</h3>
+        <div class="social-logos">
+          <a href="https://www.facebook.com/share/1Q3z1BkagX/?mibextid=wwXIfr"><img src="/Images/Logos/FaceLogo.avif" alt="Facebook"></a>
+          <a href="https://instagram.com/renacehats"><img src="/Images/Logos/InstaLogo.avif" alt="Instagram"></a>
+          <a href="https://tiktok.com/@renacehats"><img src="/Images/Logos/TikTokLogo.avif" alt="TikTok"></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Línea inferior -->
+    <div class="footer-separator"></div>
+
+    <!-- Logos pagos -->
+    <div class="footer-payments">
+      <img src="/Images/Logos/TarjetasLogo.avif" alt="Pago con tarjeta">
+      <img src="/Images/Logos/NequiLogo.avif" alt="Pago con Nequi">
+      <img src="/Images/Logos/ConsigLogo.avif" alt="Pago por consignación">
+    </div>
+
+    <!-- Copyright -->
+    <div class="footer-bottom">
+      <p>© 2026 <span>Renace Hats</span> by Elkin Llanos</p>
+    </div>
+  </footer>
+
+  <!-- BOTÓN WHATSAPP FLOTANTE -->
+<a href="https://wa.me/573152349836?text=Hola%20Renace%20Hats%2C%20vengo%20de%20la%20p%C3%A1gina%20web%20y%20deseo%20realizar%20una%20compra.%20👋🏻" 
+    class="whatsapp-float" target="_blank">
+    <img src="/Images/Logos/Whats.avif" alt="WhatsApp">
+    <span>¡Escríbenos!</span>
+</a>
+
+  <script src="/script.js"></script>
+</body>
+</html>

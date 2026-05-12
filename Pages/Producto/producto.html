@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Renace Hats</title>
+  <link rel="icon" href="/Images/Favicon/favicon.png" type="image/png">
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+
+  <!-- HEADER INDEPENDIENTE -->
+<header class="site-header" id="siteHeader">
+    <nav class="site-navbar">
+
+        <!-- Botón menú -->
+        <button class="site-menu-toggle" id="menuToggle">☰</button>
+
+        <!-- Logo centrado -->
+        <div class="site-logo">
+            <a href="/index.html">
+                <img src="/Images/Logos/LogoRenaceHats.avif" alt="Sombreros Logo" draggable="false">
+            </a>
+        </div>
+
+        <!-- Espaciador -->
+        <div class="site-spacer"></div>
+
+    </nav>
+</header>
+
+<!-- OVERLAY GENERAL (SIEMPRE DESPUÉS DEL HEADER) -->
+<div class="overlay" id="overlay"></div>
+
+<!-- MENÚ PRINCIPAL -->
+<aside class="side-menu" id="sideMenu">
+    <button class="close-menu" id="closeMainMenu">✕</button>
+    <h3 class="menu-title">MENU</h3>
+
+    <ul class="side-menu-links">
+        <li><a href="/index.html">Inicio</a></li>
+        <li class="divider"></li>
+
+        <li>
+            <button class="submenu-btn" id="openCatalogo">
+                Catálogo <span class="arrow">❯</span>
+            </button>
+        </li>
+        <li class="divider"></li>
+
+        <li><a href="/Pages/Nosotros/Nosotros.html">Nosotros</a></li>
+        <li class="divider"></li>
+
+        <li><a href="/Pages/Contacto/Contacto.html">Contacto</a></li>
+    </ul>
+</aside>
+
+<!-- SUBMENÚ CATALOGO -->
+<aside class="side-menu side-menu-secondary" id="catalogoMenu">
+    <button class="close-menu" id="closeCatalogo">✕</button>
+    <h3 class="menu-title">CATÁLOGO</h3>
+
+    <ul class="side-menu-links">
+
+  <li>
+    <a href="/Pages/Catalogo/sombreros.html" class="submenu-btn">
+      Sombreros <span class="arrow">❯</span>
+    </a>
+  </li>
+
+  <li class="divider"></li>
+
+  <li>
+    <a href="/Pages/Catalogo/ponchos.html" class="submenu-btn">
+      Ponchos <span class="arrow">❯</span>
+    </a>
+  </li>
+
+  <li class="divider"></li>
+
+  <li>
+    <a href="/Pages/Catalogo/correas.html" class="submenu-btn">
+      Correas <span class="arrow">❯</span>
+    </a>
+  </li>
+
+</ul>
+</aside>
+
+  <!-- DETALLE DEL SOMBRERO -->
+  <section class="detalle-container">
+
+    <!-- GALERÍA -->
+    <div class="galeria">
+      <div class="main-image-container">
+        <img src="/Images/Sombreros/GamuzaTrevisoNegro/S7 FOTO1.jpg" alt="Sombrero" class="main-image">
+      </div>
+
+      <div class="thumbnails-container">
+        <img src="/Images/Sombreros/GamuzaTrevisoNegro/S7 FOTO1.jpg" class="thumbnail active">
+        <img src="/Images/Sombreros/GamuzaTrevisoNegro/S7 FOTO2.jpg" class="thumbnail">
+        <img src="/Images/Sombreros/GamuzaTrevisoNegro/S7 FOTO3.jpg" class="thumbnail">
+      </div>
+    </div>
+
+    <!-- INFO -->
+    <div class="info">
+      <h1 class="producto">Producto</h1>
+      <p class="precio">Precio</p>
+
+      <div class="tallas">
+        <p class="tallas-label">Tallas disponibles:</p>
+        <span>2 ½</span><span>3</span><span>3 ½</span><span>4</span><span>4 ½</span><span>5</span>
+        <span>5 ½</span><span>6</span><span>6 ½</span>
+      </div>
+
+      <a class="btn-comprar" href="https://wa.me/573152349836?text=Hola%20👋🏻,%20estoy%20interesado%20en%20comprar%20uno%20de%20sus%20productos.%20Vengo%20desde%20la%20p%C3%A1gina%20web." target="_blank">
+        COMPRAR AHORA
+      </a>
+
+      <p class="descripcion">
+        descripcion </p>
+      <p class="descripcion">
+        descripcion </p>
+
+      <!-- Contenedor medir talla -->
+      <section class="medir-talla-container">
+        <div class="medir-talla-info">
+          <h2>¿CÓMO MEDIR TU TALLA DE SOMBRERO?</h2>
+          <p>Coloca una cinta métrica alrededor de tu cabeza, pasando 1 cm por encima de las orejas y la frente. ✅ Asegúrate de que quede ajustada pero cómoda.</p>
+          <p>Toma la medida en centímetros 📏 y elige la talla correspondiente.</p>
+          <h2>COMUNICANOS TU TALLA AL MOMENTO DE COMPRAR!</h2>
+        </div>
+        <div class="medir-talla-img">
+          <img src="/Images/Medida/Medida.avif" alt="Cómo medir tu talla">
+        </div>
+      </section>
+    </div>
+  </section>
+
+  <!-- Garantía -->
+  <div class="garantia">
+    <h2>IMPORTANTE !</h2>
+    La compra es sobrepedido, por lo que la entrega del sombrero a su medida se realiza en 10 días hábiles.
+    Nos aseguramos de hacer el mejor trabajo para ofrecerle un producto de alta calidad y garantizar su total satisfacción. 🤠
+  </div>
+
+  <!-- MODAL ZOOM (solo aparece al click, sin X visible) -->
+  <div class="modal" id="imageModal">
+    <img class="modal-content" id="modalImage">
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <!-- Columna izquierda -->
+      <div class="footer-col footer-logo">
+        <img src="/Images/Logos/LogoRenaceHats.avif" alt="Renace Hats Logo">
+      </div>
+
+      <!-- Columna centro -->
+      <div class="footer-col footer-info">
+        <h3>Información</h3>
+        <div class="footer-links">
+          <a href="/Pages/Nosotros/nosotros.html">Nosotros</a>
+          <a href="/Pages/Contacto/contacto.html">Contacto</a>
+          <a href="/Pages/Politicas/politicas.html">Nuestras Políticas</a>
+        </div>
+      </div>
+
+      <!-- Columna derecha -->
+      <div class="footer-col footer-social">
+        <h3>Síguenos</h3>
+        <div class="social-logos">
+          <a href="https://www.facebook.com/share/1Q3z1BkagX/?mibextid=wwXIfr"><img src="/Images/Logos/FaceLogo.avif" alt="Facebook"></a>
+          <a href="https://instagram.com/renacehats"><img src="/Images/Logos/InstaLogo.avif" alt="Instagram"></a>
+          <a href="https://tiktok.com/@renacehats"><img src="/Images/Logos/TikTokLogo.avif" alt="TikTok"></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Línea inferior -->
+    <div class="footer-separator"></div>
+
+    <!-- Logos pagos -->
+    <div class="footer-payments">
+      <img src="/Images/Logos/TarjetasLogo.avif" alt="Pago con tarjeta">
+      <img src="/Images/Logos/NequiLogo.avif" alt="Pago con Nequi">
+      <img src="/Images/Logos/ConsigLogo.avif" alt="Pago por consignación">
+    </div>
+
+    <!-- Copyright -->
+    <div class="footer-bottom">
+      <p>© 2026 <span>Renace Hats</span> by Elkin Llanos</p>
+    </div>
+  </footer>
+
+  <!-- BOTÓN WHATSAPP FLOTANTE -->
+<a href="https://wa.me/573152349836?text=Hola%20Renace%20Hats%2C%20vengo%20de%20la%20p%C3%A1gina%20web%20y%20deseo%20realizar%20una%20compra.%20👋🏻" 
+    class="whatsapp-float" target="_blank">
+    <img src="/Images/Logos/Whats.avif" alt="WhatsApp">
+    <span>¡Escríbenos!</span>
+</a>
+
+  <script src="/script.js"></script>
+</body>
+</html>
