@@ -1,4 +1,4 @@
-# RENACE HATS – Catálogo Web Corporativo
+# Renace Hats – Catálogo Web Corporativo
 
 ## Descripción
 Sitio web corporativo tipo catálogo para una marca de sombreros artesanales colombianos.
