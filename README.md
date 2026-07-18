@@ -9,7 +9,7 @@ Enfocado en la presentación visual de productos, experiencia de usuario y optim
 - SEO: Estructura semántica, meta etiquetas, optimización para motores de búsqueda
 - Hosting: Netlify
 
-## Link
+## Enlace
 🔗 https://renacehats.com/
 
 ## Funcionalidades
