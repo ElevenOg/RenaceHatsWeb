@@ -15,9 +15,12 @@
   --container: 1180px;
 }
 
+/* Import Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap');
+
 /* Tipografía base */
 body {
-  font-family: Arial, sans-serif; /* Esto aplica Arial a todo el sitio */
+  font-family: 'Montserrat', Arial, sans-serif;
   padding-top: 120px;
 }
 
@@ -32,13 +35,15 @@ body {
 .title,
 .name, 
 .price {
+  font-family: 'Montserrat', Arial, sans-serif;
   font-weight: 800;
   text-align: center;
   margin: 0 0 15px;
-  font-family: Arial, sans-serif; /* opcional si quieres forzar Arial solo aquí */
+  color: #5f3822;
+  margin-top: 20px;
 }
 
-.title { font-size: 1rem; line-height: 1.2; }
+.title { font-size: 1.2rem; line-height: 1.3; }
 
 .subtitle, 
 .meta, 
@@ -47,16 +52,16 @@ body {
   font-size: 1rem;
   color: var(--muted);
   margin: 0 0 16px;
-  font-family: Arial, sans-serif; /* para que también estas secciones sean Arial */
+  font-family: 'Montserrat', Arial, sans-serif;
 }
 
 .subtitle { margin-bottom: 24px; }
-.price { color: var(--brand); }
+.price { color: var(--brand); font-weight: 700; }
 
 /* Responsive Tipografía */
 @media (max-width: 768px) {
   .title {
-    font-size: 1.rem;
+    font-size: 1rem;
   }
 
   .subtitle,
@@ -70,8 +75,8 @@ body {
   }
 
   body {
-  padding-top: 90px;
-}
+    padding-top: 90px;
+  }
 }
 
 /* Logo Centrado */
@@ -107,6 +112,7 @@ body {
     z-index: 900;
     transition: all 0.3s ease;
     padding: 20px 0;
+    transition: padding 0.3s ease; /* Solo animar padding para estabilidad */
 }
 
 .site-navbar {
@@ -172,36 +178,41 @@ body {
 /* Responsive header */
 @media (max-width: 768px) {
     .site-navbar {
-        max-width: 360px;
+        position: relative;
+        width: 100%;
+        max-width: 90%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0;        /* sin padding extra */
+        height: 70px;       /* altura normal del header */
     }
 
     .site-logo {
-        margin-left: -40px;
-         margin-top: -10px; 
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -60%);
+        margin: 0;
     }
 
     .site-logo img {
-        height: 65px;
+        height: 70px;      /* logo normal */
+        width: auto;
     }
 
-    .site-header.shrink .site-logo img {
-        height: 60px;
-    }
-
-    /* Header se hace más angosto */
+    /* Header pequeño al hacer scroll */
     .site-header.shrink {
-        padding: 8px 0;
+        padding: 5px 0;      /* espacio pequeño arriba y abajo */
+        height: auto;        /* deja que el contenido defina altura */
     }
 
-    /* Logo más pequeño */
     .site-header.shrink .site-logo img {
-        height: 50px;
-        margin-left: 13px;
+        height: 60px;        /* logo más pequeño */
     }
 
-    /* Botón menú más pequeño */
     .site-header.shrink .site-menu-toggle {
-        font-size: 1.1rem;
+        font-size: 1.2rem;
         padding: 6px;
     }
 }
@@ -443,9 +454,22 @@ body {
 /* Copyright */
 .footer-bottom {
   text-align: center;
-  font-size: 0.85rem;
+  font-size: 0.9375rem;
   margin-top: 20px;
   margin-bottom: 15px;
+}
+
+.footer-bottom a {
+  color: inherit;
+  font-weight: 700;
+  text-decoration: none;
+  text-underline-offset: 3px;
+}
+
+.footer-bottom a:hover,
+.footer-bottom a:focus-visible {
+  color: var(--brand);
+  text-decoration: underline;
 }
 
 /* Responsive */
@@ -716,6 +740,7 @@ button {
   border: 1px solid transparent;
   transition: transform .15s ease, box-shadow .2s ease, background-color .2s ease;
   min-width: 120px;
+  margin-bottom: -60px;
 }
 
 .btn:hover {
@@ -724,7 +749,7 @@ button {
 }
 
 .btn-outline {
-  background: #9b7b24;
+  background: #5f4c1c;
   border-color: #fff;
   color: #fff;
 }
@@ -782,13 +807,13 @@ button {
 
 .carousel-slides {
   display: flex; /* Flex para mostrar imágenes lado a lado */
-  width: 400%; /* 4 imágenes, cada una 25% */
-  max-width: 400%; /* ✅ evita que empuje el viewport */
-  animation: fadeIn 0.1s forwards, slide 8s infinite 0.1s;
+  width: 700%; /* 7 imágenes */
+  max-width: 700%;
+  animation: fadeIn 0.1s forwards, slide 14s infinite 0.1s;
 }
 
 .carousel-slides img {
-  width: 25%; /* Cada imagen ocupa 25% del carrusel */
+  width: 14.285%; /* Cada imagen ocupa 1/7 del carrusel */
 }
 
 .carousel-slides img:hover {
@@ -797,15 +822,28 @@ button {
 
 /*Animación carrusel*/
 @keyframes slide {
-  0% { transform: translateX(0); } /* Inicio */
-  20% { transform: translateX(0); } /* Mantiene la primera imagen */
-  25% { transform: translateX(-25%); } /* Desplaza a la segunda imagen */
-  45% { transform: translateX(-25%); } /* Mantiene la segunda */
-  50% { transform: translateX(-50%); } /* Desplaza a la tercera */
-  70% { transform: translateX(-50%); } /* Mantiene la tercera */
-  75% { transform: translateX(-75%); } /* Desplaza a la cuarta */
-  95% { transform: translateX(-75%); } /* Mantiene la cuarta */
-  100% { transform: translateX(0); } /* Vuelve al inicio */
+  0% { transform: translateX(0); }
+  12% { transform: translateX(0); }
+
+  14% { transform: translateX(-14.285%); }
+  26% { transform: translateX(-14.285%); }
+
+  28% { transform: translateX(-28.57%); }
+  40% { transform: translateX(-28.57%); }
+
+  42% { transform: translateX(-42.855%); }
+  54% { transform: translateX(-42.855%); }
+
+  56% { transform: translateX(-57.14%); }
+  68% { transform: translateX(-57.14%); }
+
+  70% { transform: translateX(-71.425%); }
+  82% { transform: translateX(-71.425%); }
+
+  84% { transform: translateX(-85.71%); }
+  96% { transform: translateX(-85.71%); }
+
+  100% { transform: translateX(0); }
 }
 
 /*Responsividad*/
@@ -815,8 +853,9 @@ button {
     padding: 1px; /* Menor padding */
   }
   .carousel-slides img {
-    width: 25%; /* Imagen ocupa todo el ancho en móvil */
+    width: 14.285%;
   }
+  
 }
 
 /* Video de inicio responsivo */
@@ -962,16 +1001,22 @@ button:active {
    CSS CATALOGO
 =============================================================================================================== */
 
-/* Tarjetas (Destacados y Catálogo) */
+/* ======================================================================
+   Tarjetas (Destacados y Catálogo)
+====================================================================== */
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
+  grid-template-columns: repeat(2, minmax(0, 1fr)); /* ocupa todo el espacio disponible */
+  gap: 10px; /* tarjetas más pegadas */
   justify-content: center;
+  max-width: 900px;
   margin-inline: auto;
 }
-@media (max-width: 600px) { .grid { grid-template-columns: 1fr; } }
+
+/* ==========================
+   Tarjeta
+========================== */
 
 .card {
   background: #f7f3ef;
@@ -983,11 +1028,19 @@ button:active {
   flex-direction: column;
   justify-content: space-between;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  max-width: 380px; /* más pequeñas */
+  /* margin: 0 auto; <-- quitar para que queden pegadas */
 }
+
 .card:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 20px rgba(0,0,0,0.1);
 }
+
+/* ==========================
+   Imagen
+========================== */
+
 .thumb {
   position: relative;
   aspect-ratio: 1/1;
@@ -995,13 +1048,22 @@ button:active {
   place-items: center;
   background: #f1e7db;
 }
+
 .thumb img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: transform 0.3s ease;
 }
-.thumb img:hover { transform: scale(1.05); }
+
+.thumb img:hover {
+  transform: scale(1.05);
+}
+
+/* ==========================
+   Contenido
+========================== */
+
 .body {
   padding: 14px;
   display: flex;
@@ -1010,49 +1072,95 @@ button:active {
   gap: 8px;
   flex-grow: 1;
 }
+
 .body .name {
-  font-size: clamp(0.85rem, 2.5vw, 1.2rem);
+  font-size: clamp(0.92rem, 2.5vw, 1.2rem);
   font-weight: 800;
   text-align: center;
   color: #4b3f35;
 }
+
 .body .price {
-  font-size: clamp(0.85rem, 2.5vw, 1.2rem);
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
   font-weight: 700;
   color: #a05d3b;
   text-align: center;
 }
-.actions { padding: 10px 14px 14px; display: flex; justify-content: center; }
-.actions .btn-wa { padding: 8px 16px; border-radius: 8px; }
+
+/* ==========================
+   Botón
+========================== */
+
+.actions {
+  padding: 10px 14px 14px;
+  display: flex;
+  justify-content: center;
+}
+
+.actions .btn-wa {
+  padding: 8px 16px;
+  border-radius: 8px;
+}
+
+/* ==========================
+   Link de tarjeta
+========================== */
+
+.card-link {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
 
 /* ==========================
    Responsividad
 ========================== */
-@media (max-width: 900px) {
-  .grid { grid-template-columns: repeat(2, 1fr); }
-  .card { font-size: 0.85rem; }
-  .hero .wrap { grid-template-columns: 1fr; text-align: center; }
-  .about-intro { text-align: center; }
+
+@media (max-width: 600px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 20px; /* móvil igual que antes */
+  }
 }
 
-.card-link {
-  text-decoration: none; /* Quita la línea azul */
-  color: inherit;        /* Hereda color de la tarjeta */
-  display: flex;         /* Para mantener el layout */
-  flex-direction: column;
-  height: 100%;          /* Que ocupe toda la tarjeta */
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .card {
+    font-size: 0.85rem;
+  }
+
+  .hero .wrap {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .about-intro {
+    text-align: center;
+  }
+}
+
+/* Solo para PC: tarjetas más pequeñas */
+
+@media (min-width: 601px) {
+  .card {
+    max-width: 420px; /* Ajusta al tamaño deseado */
+    margin: 0 auto;   /* Centra la tarjeta dentro del grid */
+  }
 }
 
 /* ==========================
    Zoom para móviles
 ========================== */
 
-/* Detecta pantallas táctiles (max-width opcional) */
 @media (max-width: 900px) {
-  /* Al tocar la tarjeta */
   .card:active {
-    transform: scale(1.08); /* Zoom leve al tocar */
-    box-shadow: 0 12px 25px rgba(0,0,0,0.2); /* Sombra más marcada */
+    transform: scale(1.08);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.2);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
   }
 }

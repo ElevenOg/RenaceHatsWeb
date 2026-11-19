@@ -10,6 +10,40 @@ const WA_NUMBER = '573152349836'; // Número de WhatsApp (57 + número sin espac
 const $  = (sel, ctx = document) => ctx.querySelector(sel);
 const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
 
+// Bloquear pinch zoom y doble tap
+document.addEventListener('touchstart', function(e) {
+    if (e.touches.length > 1) e.preventDefault(); // Bloquea pinch zoom
+}, { passive: false });
+
+let lastTouch = 0;
+document.addEventListener('touchend', function(e) {
+    const now = Date.now();
+    if (now - lastTouch <= 300) e.preventDefault(); // Bloquea doble tap zoom
+    lastTouch = now;
+}, { passive: false });
+
+// Evitar rebote al llegar al final de la página (iOS)
+let startY = 0;
+
+document.addEventListener('touchstart', function(e) {
+    if (e.touches.length === 1) startY = e.touches[0].clientY;
+}, { passive: false });
+
+document.addEventListener('touchmove', function(e) {
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    const scrollHeight = document.documentElement.scrollHeight;
+    const clientHeight = window.innerHeight;
+
+    const currentY = e.touches[0].clientY;
+    const atTop = scrollTop === 0;
+    const atBottom = scrollTop + clientHeight >= scrollHeight;
+
+    // Bloquea movimiento si estamos arriba y hacemos swipe hacia abajo o abajo y hacemos swipe hacia arriba
+    if ((atTop && currentY > startY) || (atBottom && currentY < startY)) {
+        e.preventDefault();
+    }
+}, { passive: false });
+
 // =======================================================================================================
 // HEADER OCULTAR / MOSTRAR AL SCROLL
 // =======================================================================================================
@@ -23,8 +57,8 @@ document.addEventListener("DOMContentLoaded", () => {
         if (currentScroll > lastScroll && currentScroll > 80) {
             // Bajando → header pequeño
             header.classList.add("shrink");
-        } else {
-            // Subiendo → header normal
+        } else if (currentScroll < lastScroll) {
+            // Subiendo → header grande
             header.classList.remove("shrink");
         }
 
@@ -327,14 +361,198 @@ const productos = {
 },
 
 "sombrero-mielgraso-cafe": {
-  nombre: "Sombrero Miel Graso Café",
-  precio: "$180.000 COP",
+  nombre: "Sombrero Cuero Graso Café",
+  precio: "$250.000 COP",
   img1: "/Images/Productos/Sombreros/som11.avif",
   img2: "/Images/Productos/Sombreros/som11_.avif",
   img3: "/Images/Productos/Sombreros/som11__.avif",
-  desc1: "Estilo vaquero y autenticidad se encuentran en nuestro Sombrero Miel Graso Café, diseñado para quienes buscan un accesorio con carácter y personalidad. Su tono café con matices cálidos aporta un aire clásico y versátil, ideal para destacar en cualquier ocasión.",
+  desc1: "Estilo vaquero y autenticidad se encuentran en nuestro Sombrero Cuero Graso Café, diseñado para quienes buscan un accesorio con carácter y personalidad. Su tono café con matices cálidos aporta un aire clásico y versátil, ideal para destacar en cualquier ocasión.",
   desc2: "Fabricado con materiales de alta calidad, es más flexible y cómodo, lo que garantiza un ajuste perfecto y mayor facilidad de uso. Su diseño vaquero lo convierte en el complemento ideal tanto para looks casuales como para atuendos de estilo western, siendo un sombrero imprescindible para quienes valoran la distinción con un toque aventurero."
-}
+},
+
+"sombrero-trevisomostaza": {
+  nombre: "Sombrero Gamuza Treviso Mostaza",
+  precio: "$180.000 COP",
+  img1: "/Images/Productos/Sombreros/som12.avif",
+  img2: "/Images/Productos/Sombreros/som12_.avif",
+  img3: "/Images/Productos/Sombreros/som12__.avif",
+  desc1: "Estilo y personalidad se reflejan en nuestro Sombrero Gamuza Treviso Mostaza, una pieza que destaca por su tono mostaza vibrante y su diseño moderno. Su color cálido aporta carácter y originalidad, convirtiéndolo en el complemento perfecto para quienes buscan resaltar su estilo con un toque auténtico y elegante.",
+  desc2: "Elaborado en gamuza de alta calidad, ofrece una textura suave, cómoda y flexible que se adapta fácilmente para un uso agradable durante todo el día. Su diseño versátil permite combinarlo con outfits casuales o looks más sofisticados, siendo un sombrero ideal para quienes desean destacar con un accesorio lleno de estilo y distinción."
+},
+
+"sombrero-trevisonegrocorreacafe": {
+  nombre: "Sombrero Gamuza Treviso Negro Con Correa Café",
+  precio: "$180.000 COP",
+  img1: "/Images/Productos/Sombreros/som13.avif",
+  img2: "/Images/Productos/Sombreros/som13_.avif",
+  img3: "/Images/Productos/Sombreros/som13__.avif",
+  desc1: "Distinción y estilo se combinan en nuestro Sombrero Gamuza Treviso Negro con Correa Café, una pieza que destaca por su diseño elegante y su contraste sofisticado entre el negro profundo y la correa en tono café. Su estética moderna con inspiración western lo convierte en el accesorio ideal para quienes buscan un look con carácter y personalidad.",
+  desc2: "Elaborado en gamuza de alta calidad, ofrece una textura suave, flexible y cómoda que se adapta perfectamente al uso diario. La correa café añade un detalle distintivo que resalta su diseño, permitiendo combinarlo fácilmente con outfits casuales o más formales, siendo un sombrero perfecto para quienes desean un estilo auténtico y versátil."
+},
+
+"sombrero-mielgraso-negro": {
+  nombre: "Sombrero Cuero Graso Negro",
+  precio: "$250.000 COP",
+  img1: "/Images/Productos/Sombreros/som14.avif",
+  img2: "/Images/Productos/Sombreros/som14_.avif",
+  img3: "/Images/Productos/Sombreros/som14__.avif",
+  desc1: "Estilo vaquero y autenticidad se encuentran en nuestro Sombrero Cuero Graso Negro, diseñado para quienes buscan un accesorio con carácter y personalidad. Su tono negro con matices cálidos aporta un aire clásico y versátil, ideal para destacar en cualquier ocasión.",
+  desc2: "Fabricado con materiales de alta calidad, es más flexible y cómodo, lo que garantiza un ajuste perfecto y mayor facilidad de uso. Su diseño vaquero lo convierte en el complemento ideal tanto para looks casuales como para atuendos de estilo western, siendo un sombrero imprescindible para quienes valoran la distinción con un toque aventurero."
+},
+
+"sombrero-vaquerotejido-blanco": {
+  nombre: "Sombrero Country De Pajita",
+  precio: "$350.000 COP",
+  img1: "/Images/Productos/Sombreros/som15.avif",
+  img2: "/Images/Productos/Sombreros/som15_.avif",
+  img3: "/Images/Productos/Sombreros/som15__.avif",
+  desc1: "Estilo vaquero y frescura natural se combinan en nuestro Sombrero Vaquero Tejido Blanco, una pieza que destaca por su diseño clásico y su tono claro que transmite elegancia y versatilidad. Su acabado tejido le aporta un aspecto auténtico y ligero, ideal para complementar cualquier outfit con un toque western moderno.",
+  desc2: "Fabricado con tejido de alta calidad, es ligero, transpirable y cómodo, permitiendo un uso agradable incluso en climas cálidos. Su diseño vaquero atemporal lo convierte en el complemento perfecto para looks casuales, outfits de estilo vaquero o para quienes buscan un sombrero que combine comodidad, estilo y personalidad."
+},
+
+/* ============================================================================================================
+                         PONCHOS JS (PRODUCTOS)
+===============================================================================================================*/
+
+"poncho-artesanal01": {
+  nombre: "Poncho Artesanal",
+  precio: "$60.000 COP",
+  img1: "/Images/Productos/Ponchos/pon01.avif",
+  img2: "/Images/Productos/Ponchos/pon01_.avif",
+  desc1: "Nuestro Poncho Artesanal combina tradición y estilo en una prenda auténtica con diseño tejido que destaca por su carácter y elegancia natural.",
+  desc2: "Es cómodo, ligero y versátil, ideal para complementar outfits casuales o tradicionales con un toque artesanal y único."
+},
+
+"poncho-artesanal02": {
+  nombre: "Poncho Artesanal",
+  precio: "$60.000 COP",
+  img1: "/Images/Productos/Ponchos/pon02.avif",
+  img2: "/Images/Productos/Ponchos/pon02_.avif",
+  desc1: "Nuestro Poncho Artesanal combina tradición y estilo en una prenda auténtica con diseño tejido que destaca por su carácter y elegancia natural.",
+  desc2: "Es cómodo, ligero y versátil, ideal para complementar outfits casuales o tradicionales con un toque artesanal y único."
+},
+
+"poncho-artesanal03": {
+  nombre: "Poncho Artesanal",
+  precio: "$60.000 COP",
+  img1: "/Images/Productos/Ponchos/pon03.avif",
+  img2: "/Images/Productos/Ponchos/pon03_.avif",
+  desc1: "Nuestro Poncho Artesanal combina tradición y estilo en una prenda auténtica con diseño tejido que destaca por su carácter y elegancia natural.",
+  desc2: "Es cómodo, ligero y versátil, ideal para complementar outfits casuales o tradicionales con un toque artesanal y único."
+},
+
+"poncho-artesanal04": {
+  nombre: "Poncho Artesanal",
+  precio: "$60.000 COP",
+  img1: "/Images/Productos/Ponchos/pon04.avif",
+  img2: "/Images/Productos/Ponchos/pon04_.avif",
+  desc1: "Nuestro Poncho Artesanal combina tradición y estilo en una prenda auténtica con diseño tejido que destaca por su carácter y elegancia natural.",
+  desc2: "Es cómodo, ligero y versátil, ideal para complementar outfits casuales o tradicionales con un toque artesanal y único."
+},
+
+"poncho-artesanal05": {
+  nombre: "Poncho Artesanal",
+  precio: "$60.000 COP",
+  img1: "/Images/Productos/Ponchos/pon05.avif",
+  img2: "/Images/Productos/Ponchos/pon05_.avif",
+  desc1: "Nuestro Poncho Artesanal combina tradición y estilo en una prenda auténtica con diseño tejido que destaca por su carácter y elegancia natural.",
+  desc2: "Es cómodo, ligero y versátil, ideal para complementar outfits casuales o tradicionales con un toque artesanal y único."
+},
+
+/* ============================================================================================================
+                         PONCHOS JS (PRODUCTOS)
+===============================================================================================================*/
+
+"correa-parasombrero01": {
+  nombre: "Correa Para Sombrero",
+  precio: "Consultar Precio 👇🏻",
+  img1: "/Images/Productos/Correas/co01.avif",
+  img2: "/Images/Productos/Correas/co01_.avif",
+  desc1: "Nuestras correas para sombrero combinan estilo y tradición, destacando por sus detalles y acabados que aportan carácter y elegancia a cada pieza.",
+  desc2: "Son duraderas y versátiles, ideales para complementar y personalizar tu sombrero con un toque auténtico, artesanal y lleno de personalidad."
+},
+
+"correa-parasombrero02": {
+  nombre: "Correa Para Sombrero",
+  precio: "Consultar Precio 👇🏻",
+  img1: "/Images/Productos/Correas/co02.avif",
+  img2: "/Images/Productos/Correas/co02_.avif",
+  desc1: "Nuestras correas para sombrero combinan estilo y tradición, destacando por sus detalles y acabados que aportan carácter y elegancia a cada pieza.",
+  desc2: "Son duraderas y versátiles, ideales para complementar y personalizar tu sombrero con un toque auténtico, artesanal y lleno de personalidad."
+},
+
+"correa-parasombrero03": {
+  nombre: "Correa Para Sombrero",
+  precio: "Consultar Precio 👇🏻",
+  img1: "/Images/Productos/Correas/co03.avif",
+  img2: "/Images/Productos/Correas/co03_.avif",
+  desc1: "Nuestras correas para sombrero combinan estilo y tradición, destacando por sus detalles y acabados que aportan carácter y elegancia a cada pieza.",
+  desc2: "Son duraderas y versátiles, ideales para complementar y personalizar tu sombrero con un toque auténtico, artesanal y lleno de personalidad."
+},
+
+"correa-parasombrero04": {
+  nombre: "Correa Para Sombrero",
+  precio: "Consultar Precio 👇🏻",
+  img1: "/Images/Productos/Correas/co04.avif",
+  img2: "/Images/Productos/Correas/co04_.avif",
+  desc1: "Nuestras correas para sombrero combinan estilo y tradición, destacando por sus detalles y acabados que aportan carácter y elegancia a cada pieza.",
+  desc2: "Son duraderas y versátiles, ideales para complementar y personalizar tu sombrero con un toque auténtico, artesanal y lleno de personalidad."
+},
+
+"correa-parasombrero05": {
+  nombre: "Correa Para Sombrero",
+  precio: "Consultar Precio 👇🏻",
+  img1: "/Images/Productos/Correas/co05.avif",
+  img2: "/Images/Productos/Correas/co05_.avif",
+  desc1: "Nuestras correas para sombrero combinan estilo y tradición, destacando por sus detalles y acabados que aportan carácter y elegancia a cada pieza.",
+  desc2: "Son duraderas y versátiles, ideales para complementar y personalizar tu sombrero con un toque auténtico, artesanal y lleno de personalidad."
+},
+
+"correa-parasombrero06": {
+  nombre: "Correa Para Sombrero",
+  precio: "Consultar Precio 👇🏻",
+  img1: "/Images/Productos/Correas/co06.avif",
+  img2: "/Images/Productos/Correas/co06_.avif",
+  desc1: "Nuestras correas para sombrero combinan estilo y tradición, destacando por sus detalles y acabados que aportan carácter y elegancia a cada pieza.",
+  desc2: "Son duraderas y versátiles, ideales para complementar y personalizar tu sombrero con un toque auténtico, artesanal y lleno de personalidad."
+},
+
+"correa-parasombrero07": {
+  nombre: "Correa Para Sombrero",
+  precio: "Consultar Precio 👇🏻",
+  img1: "/Images/Productos/Correas/co07.avif",
+  img2: "/Images/Productos/Correas/co07_.avif",
+  desc1: "Nuestras correas para sombrero combinan estilo y tradición, destacando por sus detalles y acabados que aportan carácter y elegancia a cada pieza.",
+  desc2: "Son duraderas y versátiles, ideales para complementar y personalizar tu sombrero con un toque auténtico, artesanal y lleno de personalidad."
+},
+
+"correa-parasombrero08": {
+  nombre: "Correa Para Sombrero",
+  precio: "Consultar Precio 👇🏻",
+  img1: "/Images/Productos/Correas/co08.avif",
+  img2: "/Images/Productos/Correas/co08_.avif",
+  desc1: "Nuestras correas para sombrero combinan estilo y tradición, destacando por sus detalles y acabados que aportan carácter y elegancia a cada pieza.",
+  desc2: "Son duraderas y versátiles, ideales para complementar y personalizar tu sombrero con un toque auténtico, artesanal y lleno de personalidad."
+},
+
+"correa-parasombrero09": {
+  nombre: "Correa Para Sombrero",
+  precio: "Consultar Precio 👇🏻",
+  img1: "/Images/Productos/Correas/co09.avif",
+  img2: "/Images/Productos/Correas/co09_.avif",
+  desc1: "Nuestras correas para sombrero combinan estilo y tradición, destacando por sus detalles y acabados que aportan carácter y elegancia a cada pieza.",
+  desc2: "Son duraderas y versátiles, ideales para complementar y personalizar tu sombrero con un toque auténtico, artesanal y lleno de personalidad."
+},
+
+"correa-parasombrero10": {
+  nombre: "Correa Para Sombrero",
+  precio: "Consultar Precio 👇🏻",
+  img1: "/Images/Productos/Correas/co10.avif",
+  img2: "/Images/Productos/Correas/co10_.avif",
+  desc1: "Nuestras correas para sombrero combinan estilo y tradición, destacando por sus detalles y acabados que aportan carácter y elegancia a cada pieza.",
+  desc2: "Son duraderas y versátiles, ideales para complementar y personalizar tu sombrero con un toque auténtico, artesanal y lleno de personalidad."
+},
+
 };
 
 /* ============================================================================================================
